@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chirp;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 // use Illuminate\Http\Response;
 use Inertia\Inertia;
@@ -37,7 +38,13 @@ class ChirpController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'message' => 'required|max:255'
+        ]);
+
+        $request->user()->chirps->create($validated);
+
+        return redirect(route('chirps.index'));
     }
 
     /**
