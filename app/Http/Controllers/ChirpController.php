@@ -4,15 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Chirp;
 use Illuminate\Http\Request;
+// use Illuminate\Http\Response;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class ChirpController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response
     {
-        //
+        // The following line is for testing purposes only. Uncomment use use Illuminate\Http\Response to return a response.
+        // return response('Hello world');
+
+        // Corresponds to the chirp front end page component located at: resources/js/Pages/Chirps/Index.js
+        return Inertia::render('Chirps/Index', [
+            //
+        ]);
     }
 
     /**
