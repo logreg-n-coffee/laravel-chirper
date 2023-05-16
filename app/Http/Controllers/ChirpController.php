@@ -16,12 +16,13 @@ class ChirpController extends Controller
      */
     public function index(): Response
     {
-        // The following line is for testing purposes only. Uncomment use use Illuminate\Http\Response to return a response.
+        // Return a response to the browser. For testing purposes, we return the string 'Hello world'
         // return response('Hello world');
 
-        // Corresponds to the chirp front end page component located at: resources/js/Pages/Chirps/Index.js
+        // This returns the chirp front end page component located at: resources/js/Pages/Chirps/Index.js
         return Inertia::render('Chirps/Index', [
-            //
+            // 'chirps' will be passed into the frontend by Inertia as a React prop
+            'chirps' => Chirp::with('user')->latest()->get(),
         ]);
     }
 
