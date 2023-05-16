@@ -42,7 +42,7 @@ class ChirpController extends Controller
             'message' => 'required|max:255'
         ]);
 
-        $request->user()->chirps->create($validated);
+        $request->user()->chirps()->create($validated);
 
         return redirect(route('chirps.index'));
     }
