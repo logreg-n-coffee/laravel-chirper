@@ -46,7 +46,8 @@ class ChirpPolicy
      */
     public function delete(User $user, Chirp $chirp): bool
     {
-        //
+        // specify that only the author is authorized to delete a Chirp
+        return $this->update($user, $chirp); // call itself to check if we have update permission
     }
 
     /**
